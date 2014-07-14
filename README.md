@@ -42,5 +42,18 @@ Implementation of exposed Objective C method
         ...
     }
 
+Invocation in web(javascript)
+---------------------------------
+    //example only.
+    function execute(url)
+    {
+         var iframe = document.createElement("IFRAME");
+         iframe.setAttribute("src", url);
+         document.documentElement.appendChild(iframe);
+         iframe.parentNode.removeChild(iframe);
+         iframe = null;
+    }
+    execute('js-call://user/set?uid=1&name=jpx');
+
 # Compatibility
 use ARC, iOS 5.0+ support.
