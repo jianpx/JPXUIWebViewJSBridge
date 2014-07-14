@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>hello</h1>
+        <button onClick="callSetUser();">点我测试</button>
+        <script>
+            function execute(url)
+            {
+                var iframe = document.createElement("IFRAME");
+                iframe.setAttribute("src", url);
+                document.documentElement.appendChild(iframe);
+                iframe.parentNode.removeChild(iframe);
+                iframe = null;
+            }
+            function setUserCallback(id, info) {
+                alert('jsbridge' + ', id: ' + id + ' info: ' + info);
+            }
+            function callSetUser (){
+                var url = 'js-call://user/set?id=1343124321&info=你好&callback=setUserCallback';
+                execute(url);
+
+            }
+        </script>
+
+    </body>
+</html>
