@@ -41,3 +41,6 @@ Implementation of exposed Objective C method
     {
         ...
     }
+
+# Compatibility
+use ARC, iOS 5.0+ support.
