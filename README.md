@@ -3,7 +3,8 @@ simplify invocation between Objective C and Javascript Code.
 
 # Background
 Guys know that the magic of Javascript can invoke Objective C code lies in
-     - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+
+    - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 
 Generally Speaking, we will implement code like this to achieve:
 
