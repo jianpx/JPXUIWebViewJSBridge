@@ -1,6 +1,30 @@
 # JPXUIWebViewJSBridge
 simplify invocation between Objective C and Javascript Code.
 
+# Background
+Guys know that the magic of Javascript can invoke Objective C code lies in
+     - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+
+Generally Speaking, we will implement code like this to achieve:
+
+    - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+    {
+      if ([request.URL.absoluteString hasPrefix:@"js-call://user/set"]) {
+        NSDictionary *parameters = [self parseQueryString:request.URL.absoluetString];
+        [self executeSomeObjectiveCCodeWithParameters:parameters];
+        return NO;
+      } else if ([request.URL.absoluteString hasPrefix:@"js-call://user/get"]) {
+        NSDictionary *parameters = [self parseQueryString:request.URL.absoluetString];
+        [self executeSomeObjectiveCCodeWithParameters:parameters];
+        return NO;
+      } else if (...) {
+        ...
+      }
+      return YES;
+    }
+
+So, there will be a lot of ```if ... else if ... else ``` code. And the exposed methods can not be aware at a glance.
+That is Why I create JPXUIWebViewJSBridge to handle this embarrassment.
 # Usage
 Initialization
 -----------------
@@ -11,7 +35,7 @@ Initialization
 
 Config
 --------
-    //here, element in routines is an array, the first item of the element is url pattern, the second one is your exposed method implementation. 
+    //here, element in routines is an array, the first item of the element is url pattern, the second one is your exposed method implementation.
     self.bridge.routines = @[@[@"^js-call://user/set.*$", @"setUser"],
                              @[@"^js-call://user/get.*$", @"getUser"]
                              ];
