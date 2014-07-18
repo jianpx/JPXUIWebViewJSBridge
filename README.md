@@ -1,5 +1,5 @@
 # JPXUIWebViewJSBridge
-simplify invocation between Objective C and Javascript Code.
+simplify invocation between Objective C and Javascript Code
 
 # Background
 Guys know that the magic of Javascript can invoke Objective C code lies in
